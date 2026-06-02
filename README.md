@@ -1,16 +1,47 @@
-# React + Vite
+# 乡野共富 | 山野好物品牌馆 (Rural Commerce Studio)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+这是一个为“乡野共富”项目打造的高端、现代化的数字品牌展馆页面。本项目以“极简杂志风”为设计灵感，旨在通过卓越的视觉排版和丝滑的交互体验，将中国优质农产品（如秦岭猕猴桃、元阳红米、武夷笋干等）背后的产地故事与品质承诺优雅地传递给消费者。
 
-Currently, two official plugins are available:
+## 🌟 核心特色 (Features)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **极简杂志风 (Minimalist Editorial Design)**: 采用充足的留白、几何线条与大面积高清图片，并配合精心调整的西文/中文混合排版，营造出高端生活方式品牌质感。
+- **动态呼吸感 (Smooth Micro-Animations)**: 引入平滑的元素入场渐现效果和图片悬停慢镜放大特效。
+- **流畅的页面转场 (Page Transitions)**: 借助 Framer Motion 实现了如同原生 App 般平滑顺畅的导航切换与组件更替。
+- **滚动进度指示 (Scroll Indicator)**: 页面顶部自带跟随阅读进度的细线进度条。
 
-## React Compiler
+## 🛠 技术栈 (Tech Stack)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+项目经过全面重构，采用了前沿的前端工程化体系：
 
-## Expanding the ESLint configuration
+- **核心框架**: [React](https://react.dev/) + [Vite](https://vitejs.dev/) (提供极速的冷启动与热更新)
+- **CSS 引擎**: [Tailwind CSS v4](https://tailwindcss.com/) (使用最新 `@theme` 变量系统与纯享工具类体验)
+- **动效库**: [Framer Motion](https://www.framer.com/motion/) (实现精细的转场和滚动揭示动画)
+- **图标库**: [Lucide React](https://lucide.dev/) (提供极简轻量的 SVG 矢量图标)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 快速启动 (Quick Start)
+
+请确保你的环境已安装了 Node.js（推荐使用 v18+）。
+
+1. **安装依赖**
+   ```bash
+   npm install
+   ```
+
+2. **启动本地开发服务器**
+   ```bash
+   npm run dev
+   ```
+
+3. **构建生产版本**
+   ```bash
+   npm run build
+   ```
+
+## 📂 项目结构 (Project Structure)
+
+- `src/App.jsx` - 包含所有主要视图组件、路由导航及动画逻辑的核心入口。
+- `src/index.css` - 全局样式及 Tailwind CSS v4 的自定义主题（Theme Variables）配置。
+- `public/assets/images/` - 项目中使用的所有高清静态图片资源。
+
+---
+*“把山野里的好东西，带到更多人的餐桌。”*
