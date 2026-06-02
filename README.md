@@ -1,50 +1,16 @@
-# 乡野共富 | 山野好物品牌馆
+# React + Vite
 
-这是一个以“乡村振兴与数字助农”为主题的品牌介绍型网页。页面参考南孚官网的组织方式，用大标题首屏、产品卖点分区、产地展示、品质保障、品牌故事和共富成效来呈现乡村好物品牌。
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-本项目为独立乡村版仓库，不与原抖音电商 AI 网页仓库混用。
+Currently, two official plugins are available:
 
-## 页面结构
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-| 页面 | 内容 |
-| --- | --- |
-| Home | 品牌首屏、主视觉图片区、三张图片占位、选择理由 |
-| 产地精选 | 秦岭、元阳、武夷等产地介绍和图片占位 |
-| 产品矩阵 | 猕猴桃、红米、笋干、枸杞原浆产品展示 |
-| 产地故事 | 返乡青年、妇女创业队、梯田红米故事 |
-| 品质保障 | 产地筛选、分级包装、冷链发货、售后承诺 |
-| 共富成效 | 合作社、内容触达、订单转化、复购率数据 |
-| About | 品牌定位与图片占位 |
+## React Compiler
 
-## 视觉与交互
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- 顶部品牌导航，去掉后台侧边栏。
-- 首页小标题“主题：乡村振兴与数字助农”放大为品牌标语。
-- 首页右侧主视觉高度降低，保留动画插画并作为图 1 区域。
-- 增加多个 `.image-slot` 图片占位，后续可直接替换真实图片。
-- 使用滚动进度条、入场动画、产品卡、数据卡和产地卡增强浏览体验。
+## Expanding the ESLint configuration
 
-## 文件结构
-
-```text
-.
-├── index.html
-├── app.js
-├── styles.css
-├── README.md
-└── 网页所有截图/
-```
-
-## 本地运行
-
-直接打开 `index.html`，或使用静态服务器：
-
-```bash
-python -m http.server 4173
-```
-
-然后访问：
-
-```text
-http://127.0.0.1:4173/index.html
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
