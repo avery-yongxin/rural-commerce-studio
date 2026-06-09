@@ -15,16 +15,16 @@ const pageMeta = {
 };
 
 const originsData = [
-  ["秦岭周至", "山地猕猴桃", "北纬 34° 的昼夜温差，让果香更集中。", "果园实景图", "/assets/images/qinling-kiwi.png"],
-  ["元阳梯田", "高山红米", "梯田水系与传统耕作保留谷物本味。", "梯田航拍图", "/assets/images/yuanyang-rice.png"],
-  ["武夷竹乡", "生态笋干", "日晒风干，脆嫩耐煮，带着山林清香。", "竹林采收图", "/assets/images/wuyi-bamboo.png"]
+  ["秦岭周至", "山地猕猴桃", "北纬 34° 的昼夜温差，让果香更集中。", "果园实景图", "./assets/images/qinling-kiwi.png"],
+  ["元阳梯田", "高山红米", "梯田水系与传统耕作保留谷物本味。", "梯田航拍图", "./assets/images/yuanyang-rice.png"],
+  ["武夷竹乡", "生态笋干", "日晒风干，脆嫩耐煮，带着山林清香。", "竹林采收图", "./assets/images/wuyi-bamboo.png"]
 ];
 
 const productsData = [
-  ["秦岭山地猕猴桃", "自然成熟 / 酸甜均衡", "Fresh Fruit", "/assets/images/qinling_zhonghua_mihoutao.png"],
-  ["云岭高山红米", "梯田种植 / 米香扎实", "Grain", "/assets/images/hongmi.png"],
-  ["闽北生态笋干", "日晒风干 / 脆嫩耐煮", "Bamboo Shoot", "/assets/images/sungan.png"],
-  ["塞上枸杞原浆", "鲜果压榨 / 配料干净", "Goji Drink", "/assets/images/gouqiyuanjiang.jpg"]
+  ["秦岭山地猕猴桃", "自然成熟 / 酸甜均衡", "Fresh Fruit", "./assets/images/qinling_zhonghua_mihoutao.png"],
+  ["云岭高山红米", "梯田种植 / 米香扎实", "Grain", "./assets/images/hongmi.png"],
+  ["闽北生态笋干", "日晒风干 / 脆嫩耐煮", "Bamboo Shoot", "./assets/images/sungan.png"],
+  ["塞上枸杞原浆", "鲜果压榨 / 配料干净", "Goji Drink", "./assets/images/gouqiyuanjiang.jpg"]
 ];
 
 const FadeIn = ({ children, delay = 0, className = "" }) => (
@@ -158,15 +158,15 @@ function HomeView({ setPage }) {
         </div>
         <FadeIn delay={0.2}>
           <div className="w-full aspect-[4/5] bg-[var(--bg-alt)] overflow-hidden group">
-             <img src="/assets/images/R.png" alt="山野好物" className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105" />
+             <img src="./assets/images/R.png" alt="山野好物" className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105" />
           </div>
         </FadeIn>
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-[2px] bg-[var(--line)] border border-[var(--line)] mb-32">
-        <ImageSlot title="产地实景图" label="秦岭果园" image="/assets/images/R.png" />
-        <ImageSlot title="农产品特写" label="山野好物" image="/assets/images/product-still-life.png" />
-        <ImageSlot title="合作社劳作图" label="分拣现场" image="/assets/images/cooperative-work.png" />
+        <ImageSlot title="产地实景图" label="秦岭果园" image="./assets/images/R.png" />
+        <ImageSlot title="农产品特写" label="山野好物" image="./assets/images/product-still-life.png" />
+        <ImageSlot title="合作社劳作图" label="分拣现场" image="./assets/images/cooperative-work.png" />
       </section>
 
       <section className="pt-20 border-t border-[var(--line)]">
@@ -204,7 +204,7 @@ function OriginsView() {
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <ImageSlot title="产地分布图" label="四大产区" image="/assets/images/origin-map.png" aspect="aspect-[16/9]" />
+          <ImageSlot title="产地分布图" label="四大产区" image="./assets/images/origin-map.png" aspect="aspect-[16/9]" />
         </FadeIn>
       </section>
       
@@ -264,7 +264,7 @@ function StoryView() {
           <h2 className="font-serif text-3xl lg:text-5xl mb-8">好产品背后，是一群认真生活的人。</h2>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <ImageSlot title="产地故事图" label="直播助农" image="/assets/images/village-story.png" aspect="aspect-[16/9]" />
+          <ImageSlot title="产地故事图" label="直播助农" image="./assets/images/village-story.png" aspect="aspect-[16/9]" />
         </FadeIn>
       </section>
       <section className="mt-20 flex flex-col">
@@ -346,7 +346,7 @@ function AboutView() {
         </p>
       </FadeIn>
       <FadeIn delay={0.2}>
-        <ImageSlot title="品牌形象图" label="乡野共富" image="/assets/images/brand-still-life.png" aspect="aspect-[4/5]" />
+        <ImageSlot title="品牌形象图" label="乡野共富" image="./assets/images/brand-still-life.png" aspect="aspect-[4/5]" />
       </FadeIn>
     </section>
   );
