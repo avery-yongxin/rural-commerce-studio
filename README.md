@@ -18,8 +18,12 @@
 - **动效库**: [Framer Motion](https://www.framer.com/motion/) (实现精细的转场和滚动揭示动画)
 - **图标库**: [Lucide React](https://lucide.dev/) (提供极简轻量的 SVG 矢量图标)
 
-## 🚀 快速启动 (Quick Start)
+## 🚀 快速预览与启动 (Quick Start)
 
+### 方式一：无环境本地直接预览（推荐）
+在经过单文件内联构建后，你无需配置任何 Node.js 等开发环境，只需在项目根目录下**双击运行 `index.html`**，即可在浏览器中获得与线上一致的极简体验、视觉特效和页面功能！
+
+### 方式二：本地开发环境
 请确保你的环境已安装了 Node.js（推荐使用 v18+）。
 
 1. **安装依赖**
@@ -32,16 +36,18 @@
    npm run dev
    ```
 
-3. **构建生产版本**
+3. **构建生产版本**（自动生成单文件 `index.html` 到根目录）
    ```bash
    npm run build
    ```
 
 ## 📂 项目结构 (Project Structure)
 
+- `index.html` - 经过编译后的单文件部署版（包含全部内联 JS/CSS），支持直接在本地双击打开（依赖根目录 `assets/` 中的图片）。
+- `src/index.html` - Vite 构建系统的原始 HTML 模板入口。
 - `src/App.jsx` - 包含所有主要视图组件、路由导航及动画逻辑的核心入口。
 - `src/index.css` - 全局样式及 Tailwind CSS v4 的自定义主题（Theme Variables）配置。
-- `public/assets/images/` - 项目中使用的所有高清静态图片资源。
+- `public/assets/images/` - 项目中使用的所有高清静态图片资源（编译后输出至根目录 `assets/`）。
 
 ---
 *“把山野里的好东西，带到更多人的餐桌。”*
