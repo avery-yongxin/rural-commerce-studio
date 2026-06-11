@@ -129,7 +129,7 @@ export default function App() {
 function HomeView({ setPage }) {
   return (
     <>
-      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-center px-6 md:px-20 max-w-[1600px] mx-auto py-16 relative">
+      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-start pt-12 md:pt-24 pb-16 px-6 md:px-20 max-w-[1600px] mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <div className="z-10">
             <FadeIn>
@@ -154,11 +154,6 @@ function HomeView({ setPage }) {
                 <button onClick={() => setPage('origins')} className="h-14 px-10 border border-[var(--line-dark)] text-[var(--text-main)] text-sm tracking-[1.5px] uppercase hover:border-[var(--text-main)] transition-colors">
                   查看产地
                 </button>
-              </div>
-              <div className="mt-16 flex gap-10 pt-10 border-t border-[var(--line)]">
-                <div><strong className="block font-serif text-3xl mb-1">4</strong><span className="text-xs text-[var(--text-muted)] uppercase tracking-[1px]">核心产区</span></div>
-                <div><strong className="block font-serif text-3xl mb-1">36+</strong><span className="text-xs text-[var(--text-muted)] uppercase tracking-[1px]">合作村落</span></div>
-                <div><strong className="block font-serif text-3xl mb-1">100%</strong><span className="text-xs text-[var(--text-muted)] uppercase tracking-[1px]">产地直发</span></div>
               </div>
             </FadeIn>
           </div>
@@ -226,7 +221,7 @@ function HomeView({ setPage }) {
 function OriginsView() {
   return (
     <>
-      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-center px-6 md:px-20 max-w-[1600px] mx-auto py-16 relative">
+      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-start pt-12 md:pt-24 pb-16 px-6 md:px-20 max-w-[1600px] mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-24 items-center">
           <div className="z-10">
             <FadeIn>
@@ -324,7 +319,7 @@ function OriginsView() {
 function ProductsView() {
   return (
     <>
-      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-center px-6 md:px-20 max-w-[1600px] mx-auto py-16 relative">
+      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-start pt-12 md:pt-24 pb-16 px-6 md:px-20 max-w-[1600px] mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-24 items-center">
           <div className="z-10">
              <FadeIn>
@@ -431,7 +426,7 @@ function StoryView() {
   ];
   return (
     <>
-      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-center px-6 md:px-20 max-w-[1600px] mx-auto py-16 relative">
+      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-start pt-12 md:pt-24 pb-16 px-6 md:px-20 max-w-[1600px] mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-24 items-center">
           <div className="z-10">
             <FadeIn>
@@ -502,7 +497,7 @@ function QualityView() {
   ];
   return (
     <>
-      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-center px-6 md:px-20 max-w-[1600px] mx-auto py-16 relative">
+      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-start pt-12 md:pt-24 pb-16 px-6 md:px-20 max-w-[1600px] mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-24 items-center">
           <div className="z-10">
             <FadeIn>
@@ -574,7 +569,7 @@ function ImpactView() {
   ];
   return (
     <>
-      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-center px-6 md:px-20 max-w-[1600px] mx-auto py-16 relative">
+      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-start pt-12 md:pt-24 pb-16 px-6 md:px-20 max-w-[1600px] mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-24 items-center">
           <div className="z-10">
             <FadeIn>
@@ -659,7 +654,7 @@ function ImpactView() {
 function AboutView() {
   return (
     <>
-      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-center px-6 md:px-20 max-w-[1600px] mx-auto py-16 relative">
+      <section className="min-h-[calc(100vh-80px)] flex flex-col justify-start pt-12 md:pt-24 pb-16 px-6 md:px-20 max-w-[1600px] mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-24 items-center">
           <div className="z-10">
             <FadeIn>
