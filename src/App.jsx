@@ -58,17 +58,6 @@ const ImageSlot = ({ title, label, image, aspect = "aspect-[3/4]", objectFit = "
   </div>
 );
 
-const ScrollIndicator = () => (
-  <motion.div 
-    animate={{ y: [0, 10, 0] }} 
-    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} 
-    className="absolute bottom-10 left-6 md:left-20 flex flex-col items-center opacity-50 z-10"
-  >
-    <span className="text-[10px] uppercase tracking-[2px] mb-2 font-sans rotate-90 origin-left ml-4">Scroll</span>
-    <div className="w-[1px] h-12 bg-[var(--text-main)]"></div>
-  </motion.div>
-);
-
 export default function App() {
   const [currentPage, setCurrentPage] = useState(() => localStorage.getItem(storeKey) || "home");
   const { scrollYProgress } = useScroll();
@@ -149,10 +138,15 @@ function HomeView({ setPage }) {
                 <span className="whitespace-nowrap">把山野里的好东西，</span><br/>
                 <span className="whitespace-nowrap">带到更多人的餐桌。</span>
               </h2>
-              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] mb-12 leading-relaxed">
-                乡野共富精选来自秦岭、云岭、武夷与塞上的农产品，用稳定的品质、清晰的产地故事和温暖的品牌表达，
-                让每一份山野好物都被认真看见。这不仅仅是一次购买，更是一次与大地的深度连接。
+              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] mb-8 leading-relaxed">
+                乡野共富精选来自秦岭、云岭、武夷与塞上的农产品，用稳定的品质、清晰的产地故事和温暖的品牌表达，让每一份山野好物都被认真看见。这不仅仅是一次购买，更是一次与大地的深度连接。
               </p>
+              <div className="bg-[var(--bg-alt)] p-6 mb-12 max-w-[600px] border-l-2 border-[var(--line-dark)]">
+                <strong className="block text-sm mb-2 font-serif">当季推荐：秦岭高山猕猴桃与武夷鲜竹笋</strong>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                  新鲜下架，从枝头到舌尖不超过72小时。我们联合当地数十个核心合作社，去除所有中间环节，将大自然最真实的馈赠直达您的餐桌，让健康与美味不再奢侈。
+                </p>
+              </div>
               <div className="flex flex-wrap gap-5">
                 <button onClick={() => setPage('products')} className="h-14 px-10 bg-[var(--text-main)] text-white text-sm tracking-[1.5px] uppercase hover:bg-[var(--accent)] transition-colors">
                   探索产品
@@ -174,7 +168,7 @@ function HomeView({ setPage }) {
             </div>
           </FadeIn>
         </div>
-        <ScrollIndicator />
+        
       </section>
 
       <div className="px-6 md:px-20 max-w-[1600px] mx-auto">
@@ -238,9 +232,14 @@ function OriginsView() {
             <FadeIn>
               <p className="text-[var(--text-muted)] font-sans text-xs font-medium tracking-[3px] uppercase mb-4">Selected Origins</p>
               <h1 className="font-serif text-5xl md:text-[6rem] leading-[1.05] tracking-tight mb-8">产地精选</h1>
-              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed">
+              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed mb-8">
                 我们把页面的主角交给真实乡村：山地、梯田、竹林、合作社和采收现场，共同组成品牌的第一层可信度。跨越经纬度，只为寻觅最纯粹的自然馈赠。
               </p>
+              <div className="flex gap-4 mb-12">
+                <img src="./assets/images/wuyi-bamboo.png" className="w-24 h-24 object-cover border border-[var(--line)]" alt="产区"/>
+                <img src="./assets/images/yuanyang-rice.png" className="w-24 h-24 object-cover border border-[var(--line)]" alt="产区"/>
+                <img src="./assets/images/qinling-kiwi.png" className="w-24 h-24 object-cover border border-[var(--line)]" alt="产区"/>
+              </div>
               <div className="mt-12 flex flex-col gap-4">
                 <div className="flex items-center gap-3"><MapPin size={18} className="text-[var(--text-main)]"/> <span className="text-[var(--text-muted)]">跨越北纬21°至39°的核心农业带</span></div>
                 <div className="flex items-center gap-3"><MapPin size={18} className="text-[var(--text-main)]"/> <span className="text-[var(--text-muted)]">坚持原产地直采，拒绝异地贴牌</span></div>
@@ -264,7 +263,7 @@ function OriginsView() {
             </div>
           </FadeIn>
         </div>
-        <ScrollIndicator />
+        
       </section>
       
       <div className="px-6 md:px-20 max-w-[1600px] mx-auto pb-32">
@@ -331,9 +330,15 @@ function ProductsView() {
              <FadeIn>
                <p className="text-[var(--text-muted)] font-sans text-xs font-medium tracking-[3px] uppercase mb-4">Product Family</p>
                <h1 className="font-serif text-5xl md:text-[6rem] leading-[1.05] tracking-tight mb-8">产品矩阵</h1>
-               <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed">
+               <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed mb-8">
                  四类山野好物，覆盖日常餐桌与节礼场景。以自然之名，甄选每一份食材。不论是送礼还是自留，都能感受到大山深处的质朴与诚意。
                </p>
+               <div className="grid grid-cols-2 gap-6 mb-12 max-w-[600px]">
+                 <div><strong className="font-serif block mb-1">0添加</strong><span className="text-sm text-[var(--text-muted)]">拒绝防腐剂与人工色素</span></div>
+                 <div><strong className="font-serif block mb-1">应季采收</strong><span className="text-sm text-[var(--text-muted)]">遵循自然规律，过季不候</span></div>
+                 <div><strong className="font-serif block mb-1">严选优品</strong><span className="text-sm text-[var(--text-muted)]">仅保留前20%的最优果实</span></div>
+                 <div><strong className="font-serif block mb-1">手工打理</strong><span className="text-sm text-[var(--text-muted)]">保留传统农艺温度与匠心</span></div>
+               </div>
                <div className="mt-12 flex flex-wrap gap-3">
                  <span className="px-5 py-2 border border-[var(--line-dark)] text-[var(--text-muted)] text-sm rounded-full">四时鲜果</span>
                  <span className="px-5 py-2 border border-[var(--line-dark)] text-[var(--text-muted)] text-sm rounded-full">高山杂粮</span>
@@ -346,7 +351,7 @@ function ProductsView() {
             <ImageSlot title="四时佳果" label="当季热销" image="./assets/images/product-still-life.png" aspect="h-full" />
           </FadeIn>
         </div>
-        <ScrollIndicator />
+        
       </section>
 
       <div className="px-6 md:px-20 max-w-[1600px] mx-auto pb-32">
@@ -432,9 +437,13 @@ function StoryView() {
             <FadeIn>
               <p className="text-[var(--text-muted)] font-sans text-xs font-medium tracking-[3px] uppercase mb-4">Village Stories</p>
               <h1 className="font-serif text-5xl md:text-[6rem] leading-[1.05] tracking-tight mb-8">产地故事</h1>
-              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed">
+              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed mb-8">
                 好产品背后，是一群认真生活的人。我们倾听土地的声音，也倾听农人的心声。每一个村落，都有属于自己的传奇。
               </p>
+              <div className="mb-12 space-y-4 max-w-[600px]">
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">在这个效率至上的时代，仍有很多人选择放慢脚步。他们可能是回到乡村的大学生，可能是世代务农的老把式，也可能是重拾传统手艺的留守妇女。</p>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">正是他们的坚守，才让我们在这个飞速运转的世界里，依然能品尝到缓慢生长的、真实的自然之味。</p>
+              </div>
               <blockquote className="mt-12 pl-6 border-l-2 border-[var(--text-main)] italic text-[var(--text-muted)] text-lg">
                 "脚下沾有多少泥土，心中就沉淀多少真情。我们所记录的，是乡村最真实的脉搏。"
               </blockquote>
@@ -444,7 +453,7 @@ function StoryView() {
             <ImageSlot title="直播助农" label="产地纪实" image="./assets/images/village-story.png" aspect="h-full" />
           </FadeIn>
         </div>
-        <ScrollIndicator />
+        
       </section>
 
       <div className="px-6 md:px-20 max-w-[1600px] mx-auto pb-32">
@@ -499,9 +508,14 @@ function QualityView() {
             <FadeIn>
               <p className="text-[var(--text-muted)] font-sans text-xs font-medium tracking-[3px] uppercase mb-4">Quality System</p>
               <h1 className="font-serif text-5xl md:text-[6rem] leading-[1.05] tracking-tight mb-8">品质保障</h1>
-              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed">
+              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed mb-8">
                 从山野到餐桌，每一步都要清楚、稳定、可信。我们建立了一套涵盖全链路的品控体系，用数据和标准捍卫自然本味。
               </p>
+              <ul className="mb-12 space-y-3 max-w-[600px] text-[var(--text-muted)] text-sm">
+                <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-[var(--text-main)] mt-1.5 shrink-0"></div> <span>所有鲜果采摘后48小时内必须完成分拣、打包与冷链发车，最大程度锁住新鲜。</span></li>
+                <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-[var(--text-main)] mt-1.5 shrink-0"></div> <span>干货类产品入库前需接受水分、杂质双重检测，不达标坚决退回。</span></li>
+                <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-[var(--text-main)] mt-1.5 shrink-0"></div> <span>设立专属客服通道，遇到任何品质问题，承诺24小时内提供闪电理赔。</span></li>
+              </ul>
               <div className="mt-12 flex flex-wrap gap-8">
                 <div className="flex flex-col gap-2"><ShieldCheck size={28} className="text-[var(--text-main)]" /><span className="text-sm text-[var(--text-muted)] font-medium">第三方检测</span></div>
                 <div className="flex flex-col gap-2"><Leaf size={28} className="text-[var(--text-main)]" /><span className="text-sm text-[var(--text-muted)] font-medium">无农残承诺</span></div>
@@ -513,7 +527,7 @@ function QualityView() {
              <ImageSlot title="严选标准" label="品控现场" image="./assets/images/cooperative-work.png" aspect="h-full" />
           </FadeIn>
         </div>
-        <ScrollIndicator />
+        
       </section>
 
       <div className="px-6 md:px-20 max-w-[1600px] mx-auto pb-32">
@@ -566,9 +580,19 @@ function ImpactView() {
             <FadeIn>
               <p className="text-[var(--text-muted)] font-sans text-xs font-medium tracking-[3px] uppercase mb-4">Shared Prosperity</p>
               <h1 className="font-serif text-5xl md:text-[6rem] leading-[1.05] tracking-tight mb-8">共富成效</h1>
-              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed">
+              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed mb-8">
                 让助农成效被看见，也让每次购买更有方向。商业不仅是交易，更是创造社会价值的引擎。
               </p>
+              <div className="flex flex-col gap-4 mb-12">
+                 <div className="flex items-center gap-4 border-b border-[var(--line)] pb-4">
+                   <div className="text-3xl font-serif text-[var(--text-main)]">15%</div>
+                   <div className="text-sm text-[var(--text-muted)] max-w-[300px]">品牌溢价利润，直接返还给源头村集体用于基础设施建设。</div>
+                 </div>
+                 <div className="flex items-center gap-4 pt-2">
+                   <div className="text-3xl font-serif text-[var(--text-main)]">100+</div>
+                   <div className="text-sm text-[var(--text-muted)] max-w-[300px]">开展了超过一百场线下原产地培训，传授现代生态农耕知识。</div>
+                 </div>
+              </div>
               <div className="mt-12 p-6 bg-[var(--bg-alt)] border-l-4 border-[var(--text-main)] max-w-[500px]">
                 <strong className="block text-sm text-[var(--text-main)] uppercase tracking-[2px] mb-3">年度里程碑目标</strong>
                 <p className="text-[var(--text-muted)] text-sm leading-relaxed">帮助新增 50 个偏远村落建立标准化农产品分拣中心，通过产业支持，带动至少 1000 名乡村妇女实现家门口就业。</p>
@@ -579,7 +603,7 @@ function ImpactView() {
             <ImageSlot title="乡村笑脸" label="共富纪实" image="./assets/images/smile.png" aspect="h-full" />
           </FadeIn>
         </div>
-        <ScrollIndicator />
+        
       </section>
 
       <div className="px-6 md:px-20 max-w-[1600px] mx-auto pb-32">
@@ -641,9 +665,19 @@ function AboutView() {
             <FadeIn>
               <p className="text-[var(--text-muted)] font-sans text-xs font-medium tracking-[3px] uppercase mb-4">About Xiangye</p>
               <h1 className="font-serif text-5xl md:text-[6rem] leading-[1.05] tracking-tight mb-8">关于我们</h1>
-              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed">
+              <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-[600px] leading-relaxed mb-8">
                 乡野共富，不只是卖农货，而是重新讲述产地价值。我们希望通过数字化的品牌建设，打破城乡之间的信息壁垒。
               </p>
+              <div className="mb-16 grid grid-cols-2 gap-8 max-w-[600px]">
+                <div>
+                  <h4 className="font-serif text-xl mb-2">我们的初心</h4>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">在这个快餐时代，寻回那些慢工出细活的纯粹美味。</p>
+                </div>
+                <div>
+                  <h4 className="font-serif text-xl mb-2">团队背景</h4>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">一群厌倦了格子间的都市青年与深耕泥土的农业专家走到了一起。</p>
+                </div>
+              </div>
               <div className="mt-16">
                 <p className="text-xs uppercase tracking-[2px] text-[var(--text-muted)] mb-5">媒体报道与认可</p>
                 <div className="flex flex-wrap gap-8 opacity-50 grayscale font-serif text-xl">
@@ -658,7 +692,7 @@ function AboutView() {
             <ImageSlot title="品牌愿景" label="乡野印象" image="./assets/images/brand-still-life.png" aspect="h-full" />
           </FadeIn>
         </div>
-        <ScrollIndicator />
+        
       </section>
 
       <div className="px-6 md:px-20 max-w-[1600px] mx-auto pb-32">
