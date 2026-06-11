@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Leaf, MapPin, Package, BookOpen, ShieldCheck, TrendingUp, Info } from 'lucide-react';
 
-const storeKey = "rural-brand-gallery-v3";
+const storeKey = "rural-brand-gallery-v4";
 
 const pageMeta = {
   home: { title: "山野好物品牌馆", kicker: "Rural Prosperity Goods", icon: Leaf },
@@ -40,17 +40,17 @@ const FadeIn = ({ children, delay = 0, className = "" }) => (
   </motion.div>
 );
 
-const ImageSlot = ({ title, label, image, aspect = "aspect-[3/4]" }) => (
-  <div className={`relative overflow-hidden bg-[var(--bg-alt)] ${aspect} group`}>
+const ImageSlot = ({ title, label, image, aspect = "aspect-[3/4]", objectFit = "object-cover", className="" }) => (
+  <div className={`relative overflow-hidden bg-[var(--bg-alt)] ${aspect} ${className} group`}>
     {image && (
       <img 
         src={image} 
         alt={title} 
-        className="w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105"
+        className={`w-full h-full ${objectFit} transition-transform duration-[1.2s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105`}
         loading="lazy"
       />
     )}
-    <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/60 to-transparent text-white flex flex-col z-10">
+    <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/60 to-transparent text-white flex flex-col z-10 pointer-events-none">
       <span className="text-[11px] tracking-[2px] uppercase opacity-80 mb-2">{label}</span>
       <strong className="font-serif text-2xl font-normal">{title}</strong>
     </div>
@@ -198,6 +198,27 @@ function HomeView({ setPage }) {
             ))}
           </div>
         </section>
+
+        <section className="pt-20 border-t border-[var(--line)] pb-32">
+          <FadeIn>
+            <p className="text-[var(--text-muted)] font-sans text-xs font-medium tracking-[3px] uppercase mb-4">Voice of Customers</p>
+            <h2 className="font-serif text-3xl lg:text-5xl mb-16">来自餐桌的真实反馈</h2>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              ["张女士 / 深圳", "一直在寻找有小时候味道的红米，乡野共富的元阳红米煮出来的饭又香又弹，家里老人都说好。"],
+              ["王先生 / 北京", "猕猴桃包装得非常用心，收到的时候没有一颗坏果，酸甜度刚好，已经推荐给同事了。"],
+              ["李女士 / 上海", "看了产地故事之后买的武夷笋干，能吃出来是没有硫熏过的自然味道，炖肉特别解腻。"],
+              ["刘先生 / 杭州", "枸杞原浆配料表很干净，每天早上喝一包，感觉精神状态好了很多，支持真实助农产品！"]
+            ].map(([author, quote], i) => (
+              <FadeIn key={i} delay={i * 0.1} className="bg-[var(--bg-alt)] p-8 relative">
+                <div className="text-4xl font-serif text-[var(--line-dark)] absolute top-6 left-6">"</div>
+                <p className="text-[var(--text-muted)] text-[15px] leading-relaxed relative z-10 mt-6 mb-8">{quote}</p>
+                <div className="font-sans text-sm font-medium pt-4 border-t border-[var(--line-dark)]">{author}</div>
+              </FadeIn>
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );
@@ -218,7 +239,7 @@ function OriginsView() {
             </FadeIn>
           </div>
           <FadeIn delay={0.2} className="w-full h-[50vh] lg:h-[70vh]">
-            <ImageSlot title="四大产区" label="产区分布" image="./assets/images/origin-map.png" aspect="h-full" />
+            <ImageSlot title="四大产区" label="产区分布" image="./assets/images/origin-map.png" aspect="h-full" objectFit="object-contain" className="bg-[var(--bg)]" />
           </FadeIn>
         </div>
         <ScrollIndicator />
@@ -245,6 +266,32 @@ function OriginsView() {
                 <p className="text-lg text-[var(--text-muted)] leading-relaxed">
                   这不仅仅是对食物本味的尊重，更是对世代深耕在这片土地上的农人的敬意。每一份原产地标识，都承载着一段独特的地理密码和人文故事。
                 </p>
+             </div>
+           </FadeIn>
+        </section>
+
+        <section className="mt-32 pt-20 border-t border-[var(--line)] pb-32">
+           <FadeIn>
+             <h2 className="font-serif text-3xl lg:text-5xl mb-16">严苛的产地准入标准</h2>
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                  <h3 className="font-serif text-2xl mb-4 text-[var(--text-main)]">01 / 纯净的自然环境</h3>
+                  <p className="text-base text-[var(--text-muted)] leading-relaxed">
+                    我们只选择远离工业污染源的偏远山区和传统农业保留地。水源需经过抽样检测，土壤必须富含有机质，确保农产品在最纯净的环境中自然生长。
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-serif text-2xl mb-4 text-[var(--text-main)]">02 / 传统的耕作智慧</h3>
+                  <p className="text-base text-[var(--text-muted)] leading-relaxed">
+                    优先合作保留传统农耕智慧的村落。无论是哈尼族的梯田水系循环，还是武夷山民的顺应节气采收，我们尊重并保护这些生态种植法。
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-serif text-2xl mb-4 text-[var(--text-main)]">03 / 可靠的合作纽带</h3>
+                  <p className="text-base text-[var(--text-muted)] leading-relaxed">
+                    要求产地有组织良好的农民合作社或责任心强的新农人带头。建立利益共享、风险共担的合作机制，保证品控政策的真正落地。
+                  </p>
+                </div>
              </div>
            </FadeIn>
         </section>
@@ -292,13 +339,50 @@ function ProductsView() {
                 <p className="text-base text-[var(--text-muted)] leading-relaxed mb-8">
                   {details}
                 </p>
-                <button className="self-start mt-auto flex items-center gap-2 text-sm uppercase tracking-[1px] font-medium hover:text-[var(--text-muted)] transition-colors">
-                  <span>了解详情</span>
-                  <div className="w-6 h-[1px] bg-current transition-all group-hover:w-10"></div>
-                </button>
               </div>
             </FadeIn>
           ))}
+        </section>
+
+        <section className="mt-32 pt-20 border-t border-[var(--line)] pb-32">
+          <FadeIn>
+            <h2 className="font-serif text-3xl lg:text-5xl mb-16">融入您的每一个生活场景</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="border border-[var(--line)] p-10 hover:bg-[var(--bg-alt)] transition-colors">
+                <h3 className="font-serif text-2xl mb-4">日常餐桌</h3>
+                <p className="text-[var(--text-muted)] leading-relaxed mb-6">
+                  无论是清晨的一碗红米粥，还是晚餐时的一道笋干炖肉，山野的馈赠为平淡的一日三餐增添最踏实的烟火气。吃得健康，才最安心。
+                </p>
+                <ul className="text-sm text-[var(--text-muted)] space-y-2 list-disc list-inside">
+                  <li>高山红米日常主食</li>
+                  <li>生态笋干炖煮佳品</li>
+                  <li>天然鲜果维C补充</li>
+                </ul>
+              </div>
+              <div className="border border-[var(--line)] p-10 bg-[var(--bg-alt)] hover:bg-[var(--line)] transition-colors">
+                <h3 className="font-serif text-2xl mb-4">节令馈赠</h3>
+                <p className="text-[var(--text-muted)] leading-relaxed mb-6">
+                  精心设计的环保礼盒包装，既体面又克制。将一份带着泥土芬芳和自然温度的山野好物送给挚爱亲友，是最真诚的健康祝愿。
+                </p>
+                <ul className="text-sm text-[var(--text-muted)] space-y-2 list-disc list-inside">
+                  <li>定制企业员工福利</li>
+                  <li>长辈健康滋补礼盒</li>
+                  <li>节日限量时令伴手礼</li>
+                </ul>
+              </div>
+              <div className="border border-[var(--line)] p-10 hover:bg-[var(--bg-alt)] transition-colors">
+                <h3 className="font-serif text-2xl mb-4">轻养生活</h3>
+                <p className="text-[var(--text-muted)] leading-relaxed mb-6">
+                  快节奏的现代生活中，一包原汁原味的枸杞原浆，或是几颗自然熟成的猕猴桃，为您提供便捷高效的营养补给，唤醒身体活力。
+                </p>
+                <ul className="text-sm text-[var(--text-muted)] space-y-2 list-disc list-inside">
+                  <li>办公室便捷养生</li>
+                  <li>运动后能量恢复</li>
+                  <li>熬夜加班护肝明目</li>
+                </ul>
+              </div>
+            </div>
+          </FadeIn>
         </section>
       </div>
     </>
@@ -349,6 +433,19 @@ function StoryView() {
             </FadeIn>
           ))}
         </section>
+
+        <section className="mt-20 pt-16 border-t border-[var(--line)] pb-32">
+          <FadeIn className="max-w-[800px] mx-auto text-center">
+            <div className="w-12 h-[2px] bg-[var(--text-main)] mx-auto mb-10"></div>
+            <h2 className="font-serif text-3xl mb-8">农业，始终是关于“人”的事业</h2>
+            <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-6">
+              在机械化和工业化大行其道的今天，我们依然着迷于那些带有“人情味”的农产品。那里面藏着农人对天气的敬畏，对土地的眷恋，以及对手艺的执着。
+            </p>
+            <p className="text-lg text-[var(--text-muted)] leading-relaxed">
+              我们记录这些故事，不只是为了营销，更是为了留存一份档案。让城市里的人知道，在遥远的大山深处，有这样一群人，正在用最笨拙也最真诚的方式，守护着我们的餐桌安全。
+            </p>
+          </FadeIn>
+        </section>
       </div>
     </>
   );
@@ -392,6 +489,27 @@ function QualityView() {
             </FadeIn>
           ))}
         </section>
+
+        <section className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-16 pt-20 border-t border-[var(--line)] pb-32">
+          <FadeIn>
+            <h3 className="font-serif text-3xl mb-6">透明溯源体系</h3>
+            <p className="text-[var(--text-muted)] leading-relaxed text-lg mb-4">
+              我们深知信任的建立需要打破信息黑盒。每一份发出的山野好物，都配备了专属的溯源码。
+            </p>
+            <p className="text-[var(--text-muted)] leading-relaxed text-lg">
+              扫码即可查看该批次产品的采收时间、分拣负责人、检测报告以及农园的实时日记。我们把所有流程毫无保留地展示在您面前，因为我们相信，真实是最高级的背书。
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <h3 className="font-serif text-3xl mb-6">环保包装承诺</h3>
+            <p className="text-[var(--text-muted)] leading-relaxed text-lg mb-4">
+              取之于自然，也要爱护自然。我们在保证产品运输安全的前提下，实行“过度包装”零容忍。
+            </p>
+            <p className="text-[var(--text-muted)] leading-relaxed text-lg">
+              全面使用FSC认证的环保纸箱、可降解缓冲材料和无毒水性油墨。去掉了不必要的华丽外观，把更多的成本投入到提升农产品本身的品质上。
+            </p>
+          </FadeIn>
+        </section>
       </div>
     </>
   );
@@ -418,7 +536,7 @@ function ImpactView() {
             </FadeIn>
           </div>
           <FadeIn delay={0.2} className="w-full h-[50vh] lg:h-[70vh]">
-            <ImageSlot title="乡村笑脸" label="共富纪实" image="./assets/images/R.png" aspect="h-full" />
+            <ImageSlot title="乡村笑脸" label="共富纪实" image="./assets/images/smile.png" aspect="h-full" />
           </FadeIn>
         </div>
         <ScrollIndicator />
@@ -448,6 +566,26 @@ function ImpactView() {
            <FadeIn delay={0.2} className="h-full min-h-[400px]">
              <ImageSlot title="致富之路" label="乡村振兴" image="./assets/images/village-story.png" aspect="h-full" />
            </FadeIn>
+        </section>
+
+        <section className="mt-32 pt-20 border-t border-[var(--line)] pb-32">
+          <FadeIn>
+            <h2 className="font-serif text-3xl lg:text-5xl mb-16">共富之路，步履不停</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {[
+                ["2022.03", "启动“寻源计划”", "建立第一个红米基地，帮助50户农户解决销路问题。"],
+                ["2023.08", "品控中心成立", "在原产地建立标准化仓储，将残次率控制在3%以内。"],
+                ["2024.11", "突破百村合作", "合作拓展至100个村落，带动逾300名青年返乡创业。"],
+                ["2025.05", "发布碳中和倡议", "联合科研机构指导农户采用生态环保的种植方式。"]
+              ].map(([date, title, desc], i) => (
+                <div key={i} className="border-t-2 border-[var(--text-main)] pt-6">
+                  <div className="font-sans text-sm font-bold text-[var(--text-main)] tracking-[1px] mb-4">{date}</div>
+                  <h4 className="font-serif text-xl mb-3">{title}</h4>
+                  <p className="text-[var(--text-muted)] text-[14px] leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
         </section>
       </div>
     </>
@@ -499,6 +637,24 @@ function AboutView() {
                 <span className="text-[var(--text-main)]">400-123-4567</span>
               </li>
             </ul>
+          </FadeIn>
+        </section>
+
+        <section className="mt-32 pt-20 border-t border-[var(--line)] pb-32">
+          <FadeIn className="bg-[var(--bg-alt)] p-12 lg:p-20 relative">
+            <div className="text-6xl font-serif text-[var(--line-dark)] absolute top-10 left-10 opacity-50">"</div>
+            <div className="max-w-[800px] mx-auto relative z-10 text-center">
+              <h2 className="font-serif text-3xl mb-8">创始人寄语</h2>
+              <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-6">
+                “做农业是一件需要极大耐心和敬畏心的事情。大自然不遵循互联网的快节奏，果实需要一天天成熟，信任也需要一点点积累。”
+              </p>
+              <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-8">
+                “我们创立乡野共富的初衷很简单：把我们在山野里尝到的惊艳味道，原原本本地传递给城市里的朋友们。同时，让那些面朝黄土背朝天的农人们，能够因为他们的辛勤劳作而获得体面的生活。这不仅仅是一门生意，更是一种社会责任。”
+              </p>
+              <div className="font-sans font-medium text-[var(--text-main)] tracking-[2px] uppercase">
+                —— 乡野共富团队
+              </div>
+            </div>
           </FadeIn>
         </section>
       </div>
