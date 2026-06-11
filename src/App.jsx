@@ -238,8 +238,20 @@ function OriginsView() {
               </p>
             </FadeIn>
           </div>
-          <FadeIn delay={0.2} className="w-full h-[50vh] lg:h-[70vh]">
-            <ImageSlot title="四大产区" label="产区分布" image="./assets/images/origin-map.png" aspect="h-full" objectFit="object-contain" className="bg-[var(--bg)]" />
+          <FadeIn delay={0.2} className="w-full">
+            <div className="relative overflow-hidden group">
+              <img 
+                src="./assets/images/origin-map.png" 
+                alt="四大产区" 
+                className="w-full h-auto transition-transform duration-[1.2s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/60 to-transparent text-white flex flex-col z-10 pointer-events-none">
+                <span className="text-[11px] tracking-[2px] uppercase opacity-80 mb-2">产区分布</span>
+                <strong className="font-serif text-2xl font-normal">四大产区</strong>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+            </div>
           </FadeIn>
         </div>
         <ScrollIndicator />
